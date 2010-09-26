@@ -3,27 +3,27 @@
 //-----------------------------------------------------
 //-----------------------------------------------------
 //ÓÃÓÚµ÷ÊÔ
-extern float ACTIVEPREG_Debug[3];
-extern float RMSVOLREG_Debug[3];
-extern float RMSCURREG_Debug[3];
+extern float  ACTIVEPREG_Debug[3];
+extern float  RMSVOLREG_Debug[3];
+extern float  RMSCURREG_Debug[3];
 //-----------------------------------------------------
 //-------------------------------------------------
-extern float TorqueGain;
+extern float  TorqueGain;
 extern uint16 TorqueOffset;
-extern float RotateGain;
-extern float RotateOffset;
-extern float Flow1Gain;
-extern float Flow1Offset;
-extern float Flow2Gain;
-extern float Flow2Offset;
+extern float  RotateGain;
+extern float  RotateOffset;
+extern float  Flow1Gain;
+extern float  Flow1Offset;
+extern float  Flow2Gain;
+extern float  Flow2Offset;
 //-------------------------------------------------
-extern float Flow1_Proportion;
-extern float Flow2_Proportion;
-extern float Rotate_Proportion;
-extern float Torque_Proportion;
-extern float Wheel_A;
-extern float Wheel_D;
-extern float Wheel_L;
+extern float  Flow1_Proportion;
+extern float  Flow2_Proportion;
+extern float  Rotate_Proportion;
+extern float  Torque_Proportion;
+extern float  Wheel_A;
+extern float  Wheel_D;
+extern float  Wheel_L;
 extern uint16 Torque_Threshold;
 //-------------------------------------------------
 extern SampleType SampleModeFlagAid;
@@ -73,24 +73,24 @@ extern float  CurOffset_A;
 extern int32  PowerGain_A;	 
 extern float  PowerOffset_A;	 
 //-------------------------------
-extern float VolGain_B;		
-extern float VolOffset_B;	
-extern float CurGain_B;		  
-extern float CurOffset_B;	
-extern int32 PowerGain_B;	 
-extern float PowerOffset_B;	
+extern float  VolGain_B;		
+extern float  VolOffset_B;	
+extern float  CurGain_B;		  
+extern float  CurOffset_B;	
+extern int32  PowerGain_B;	 
+extern float  PowerOffset_B;	
 //-------------------------------
-extern float VolGain_C;		
-extern float VolOffset_C;	
-extern float CurGain_C;		  
-extern float CurOffset_C;	
-extern int32 PowerGain_C;	 
-extern float PowerOffset_C;	
+extern float  VolGain_C;		
+extern float  VolOffset_C;	
+extern float  CurGain_C;		  
+extern float  CurOffset_C;	
+extern int32  PowerGain_C;	 
+extern float  PowerOffset_C;	
 //-----------------------------------------------------
 extern struct KEYPRERESPONSESTRUCT KeyResponseStruct;
 //-----------------------------------------------------
 uint8 MenuStateUPDF = FALSE;
-uint8 ScreenUPDF = FALSE;
+uint8 ScreenUPDF    = FALSE;
 struct SCRTAB ScreenTAB; 
 struct MenuStateStruct MenuState = {0x00,0x00,0x00,0x00};
 struct MenuStateStruct OldMenuState = {0x00,0x00,0x00,0x00};
