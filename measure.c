@@ -30,45 +30,45 @@ signed int TorqueCount;
 float  RotateTime;
 uint32 RotateTimeCountStart0 = 0x00;
 uint32 RotateTimeCountStartx = 0x00;
-uint32 RotateTimeCountEnd = 0x00;
-uint32 RotateTimeCountEndx = 0x00;
-uint8  RotateNumCount = 0x00;
-uint8  RotateNumCountx0 = 0x00;
-uint8  RotateNumCountx1 = 0x00;
+uint32 RotateTimeCountEnd    = 0x00;
+uint32 RotateTimeCountEndx   = 0x00;
+uint8  RotateNumCount        = 0x00;
+uint8  RotateNumCountx0      = 0x00;
+uint8  RotateNumCountx1      = 0x00;
 
 //----------------------------------------------------
 //流速计1相关变量
 float  Flow1Time;
 uint32 Flow1TimeCountStart0 = 0x00;
 uint32 Flow1TimeCountStartx = 0x00;
-uint32 Flow1TimeCountEnd = 0x00;
-uint32 Flow1TimeCountEndx = 0x00;
-uint8  Flow1NumCount = 0x00;
-uint8  Flow1NumCountx0 = 0x00;
-uint8  Flow1NumCountx1 = 0x00;
+uint32 Flow1TimeCountEnd    = 0x00;
+uint32 Flow1TimeCountEndx   = 0x00;
+uint8  Flow1NumCount        = 0x00;
+uint8  Flow1NumCountx0      = 0x00;
+uint8  Flow1NumCountx1      = 0x00;
 
 //----------------------------------------------------
 //流速计2相关变量
 float  Flow2Time;
 uint32 Flow2TimeCountStart0 = 0x00;
 uint32 Flow2TimeCountStartx = 0x00;
-uint32 Flow2TimeCountEnd = 0x00;
-uint32 Flow2TimeCountEndx = 0x00;
-uint8  Flow2NumCount = 0x00;
-uint8  Flow2NumCountx0 = 0x00;
-uint8  Flow2NumCountx1 = 0x00;
-bool   FlowSampleFlag = FALSE;
+uint32 Flow2TimeCountEnd    = 0x00;
+uint32 Flow2TimeCountEndx   = 0x00;
+uint8  Flow2NumCount        = 0x00;
+uint8  Flow2NumCountx0      = 0x00;
+uint8  Flow2NumCountx1      = 0x00;
+bool   FlowSampleFlag       = FALSE;
 
 //----------------------------------------------------
 //相关变量
-uint16 ADCREG = 0x00;
-bool   MeasureUPDF = FALSE;
-bool   BatVolUPDF = FALSE;
+uint16 ADCREG             = 0x00;
+bool   MeasureUPDF        = FALSE;
+bool   BatVolUPDF         = FALSE;
 bool   FirstIntoSpaTorRotSample;
 SampleType SampleModeFlag = SampleStop;
-uint16 T3OCRA_Count = 0x00;
-uint16 T3OCRB_Count = 0x00;
-uint8  SampleDenModeNum = 0x00;
+uint16 T3OCRA_Count       = 0x00;
+uint16 T3OCRB_Count       = 0x00;
+uint8  SampleDenModeNum   = 0x00;
 struct IntegrationStructure IntegrationStruct;
 //-----------------------------------------------------
 //可调变量
@@ -83,8 +83,8 @@ float  Flow2Offset;
 
 float  Flow1_Proportion = 0.2;
 float  Flow2_Proportion = 0.2;
-float  Rotate_Proportion	= 1.0;
-float  Torque_Proportion	= 1.0;
+float  Rotate_Proportion= 1.0;
+float  Torque_Proportion= 1.0;
 float  Wheel_A = 1.0;
 float  Wheel_D = 1.5;
 float  Wheel_L = 1.3;
@@ -144,16 +144,16 @@ void InitMeasurePara_FromEeprom(void)
 void Start_TorRotSample(uint8 TimeInterval)
 {
 	StopTimer123();//关闭T1,T2,T3;
-    TorqueOvfCount = 0x00;
-    T3OCRB_Count = 0x00;//（用于记录标号）
+    TorqueOvfCount        = 0x00;
+    T3OCRB_Count          = 0x00;//（用于记录标号）
 
-	RotateNumCount = 0x00;
-	RotateNumCountx0 = 0x00;
-	RotateNumCountx1 = 0x00;
+	RotateNumCount        = 0x00;
+	RotateNumCountx0      = 0x00;
+	RotateNumCountx1      = 0x00;
 	RotateTimeCountStart0 = 0x00;
 	RotateTimeCountStartx = 0x00;
-	RotateTimeCountEnd = 0x00;
-	RotateTimeCountEndx = 0x00;
+	RotateTimeCountEnd    = 0x00;
+	RotateTimeCountEndx   = 0x00;
 
 	SelectFreqChannel(0x02);
 	OCR3B = TimeInterval*0x186A;	   //设T3溢出中断B的时间
@@ -171,13 +171,11 @@ void Save_TorqueRotateCount(uint8 QuitTimeInterval,
     //-----------------------------------------------------
     if(!TorqueArray_UseState)//TorqueArray_UseState为FALSE时,保存于TorqueCountArray1[]中
     {
-        TorqueCountArray1[T3OCRB_Count%0x0A] =
-            (uint16)TCNT2+0xFF* (uint16)TorqueOvfCount;
+        TorqueCountArray1[T3OCRB_Count%0x0A] = (uint16)TCNT2+0xFF* (uint16)TorqueOvfCount;
     }
     else		  //TorqueArray_UseState为TRUE时,保存于TorqueCountArray2[]中
     {
-        TorqueCountArray2[T3OCRB_Count%0x0A] =
-            (uint16)TCNT2+0xFF* (uint16)TorqueOvfCount;
+        TorqueCountArray2[T3OCRB_Count%0x0A] = (uint16)TCNT2+0xFF* (uint16)TorqueOvfCount;
     }	
     
     TCNT2 = 0x00;
@@ -197,10 +195,10 @@ void Save_TorqueRotateCount(uint8 QuitTimeInterval,
     		TorqueRotateSampleFlag |= SHOWTRUE;//置位显示标志
 			//--------------------------------------------------
 			//为转速显示作准备
-            RotateNumCountx0 = RotateNumCountx1;
-            RotateNumCountx1 = RotateNumCount;
+            RotateNumCountx0      = RotateNumCountx1;
+            RotateNumCountx1      = RotateNumCount;
             RotateTimeCountStartx = RotateTimeCountEndx;
-            RotateTimeCountEndx = RotateTimeCountEnd;
+            RotateTimeCountEndx   = RotateTimeCountEnd;
 			
     		//if(RotateNumCountx1 - RotateNumCountx0)
 			//{
@@ -239,23 +237,20 @@ void Save_RotateTimeCount(void)
     RotateNumCount ++;
     if(RotateNumCount==0x01)
     {
-    	RotateTimeCountStart0 =
-    		(uint32)TCNT3+ 0xF424* (uint32)(T3OCRB_Count/0x0A);
+    	RotateTimeCountStart0 =	(uint32)TCNT3+ 0xF424* (uint32)(T3OCRB_Count/0x0A);
         RotateTimeCountStartx = RotateTimeCountStart0;
         RotateNumCountx0 = 0x01;
         RotateNumCountx1 = 0x01;
     }
     else
 	{
-        RotateTimeCountEnd = 
-    		(uint32)TCNT3+0xF424* (uint32)(T3OCRB_Count/0x0A);
+        RotateTimeCountEnd = (uint32)TCNT3+0xF424* (uint32)(T3OCRB_Count/0x0A);
 			//保存最后一个脉冲到来的时间
     }
     TCNT1 = 0xFFFF;//TCNT1设为初值
 }
 
-void SaveFlowCountForShow(uint8 FlowTimeInterval,
-	 					  uint8 ShowInterval)
+void SaveFlowCountForShow(uint8 FlowTimeInterval, uint8 ShowInterval)
 {
     //在T3比较中断A中调用,用于给流速测量定时
 	T3OCRA_Count ++;
@@ -264,16 +259,16 @@ void SaveFlowCountForShow(uint8 FlowTimeInterval,
     {
 		//------------------------------------------------
 		//为Flow1显示作准备数据
-        Flow1NumCountx0 = Flow1NumCountx1;
-        Flow1NumCountx1 = Flow1NumCount;
+        Flow1NumCountx0      = Flow1NumCountx1;
+        Flow1NumCountx1      = Flow1NumCount;
         Flow1TimeCountStartx = Flow1TimeCountEndx;
-        Flow1TimeCountEndx = Flow1TimeCountEnd;
+        Flow1TimeCountEndx   = Flow1TimeCountEnd;
         //------------------------------------------------
 		//为Flow2显示作准备数据
-		Flow2NumCountx0 = Flow2NumCountx1;
-        Flow2NumCountx1 = Flow2NumCount;
+		Flow2NumCountx0      = Flow2NumCountx1;
+        Flow2NumCountx1      = Flow2NumCount;
         Flow2TimeCountStartx = Flow2TimeCountEndx;
-        Flow2TimeCountEndx = Flow2TimeCountEnd;
+        Flow2TimeCountEndx   = Flow2TimeCountEnd;
 
 		FlowSampleFlag |= SHOWTRUE;
 		//------------------------------------------------
@@ -313,16 +308,14 @@ void Save_Flow1TimeCount(void)
     Flow1NumCount ++;
     if(Flow1NumCount==0x01)
     {
-    	Flow1TimeCountStart0 =
-    		(uint32)TCNT3 + 0xF424*(uint32)T3OCRA_Count;
+    	Flow1TimeCountStart0 = (uint32)TCNT3 + 0xF424*(uint32)T3OCRA_Count;
         Flow1TimeCountStartx = Flow1TimeCountStart0;
-        Flow1NumCountx0 = 0x01;
-        Flow1NumCountx1 = 0x01;
+        Flow1NumCountx0      = 0x01;
+        Flow1NumCountx1      = 0x01;
     }
     else
 	{
-        Flow1TimeCountEnd = 
-    		(uint32)TCNT3 + 0xF424*(uint32)T3OCRA_Count;
+        Flow1TimeCountEnd = (uint32)TCNT3 + 0xF424*(uint32)T3OCRA_Count;
 			//保存最后一个脉冲到来的时间
     }
     TCNT2 = 0xFF;//TCNT2设为初值
@@ -331,19 +324,17 @@ void Save_Flow1TimeCount(void)
 void Save_Flow2TimeCount(void)
 {
     //T1溢出中断中执行,用于保存流速
-    Flow2NumCount ++;
-    if(Flow2NumCount==0x01)
+    Flow2NumCount++;
+    if(Flow2NumCount == 0x01)
     {
-    	Flow2TimeCountStart0 =
-    		(uint32)TCNT3 + 0xF424*(uint32)T3OCRA_Count;
+    	Flow2TimeCountStart0 = (uint32)TCNT3 + 0xF424*(uint32)T3OCRA_Count;
         Flow2TimeCountStartx = Flow2TimeCountStart0;
-        Flow2NumCountx0 = 0x01;
-        Flow2NumCountx1 = 0x01;
+        Flow2NumCountx0      = 0x01;
+        Flow2NumCountx1      = 0x01;
     }
     else
 	{
-        Flow2TimeCountEnd = 
-    		(uint32)TCNT3+0xF424* (uint32)T3OCRA_Count;
+        Flow2TimeCountEnd = (uint32)TCNT3+0xF424* (uint32)T3OCRA_Count;
 			//保存最后一个脉冲到来的时间
     }
     TCNT1 = 0xFFFF;//TCNT1设为初值
@@ -359,24 +350,24 @@ void PrepareForMeasureFlow(void)
     T3OCRA_Count = 0x00;//
     ETIMSK &= ~(BIT(OCIE3B));//关闭T3比较中断B
     ETIMSK |= BIT(OCIE3A);//开启T3比较中断A
-	TIMSK |= BIT(TOIE1) | BIT(TOIE2);//开启T1,T2溢出中断
+	TIMSK  |= BIT(TOIE1) | BIT(TOIE2);//开启T1,T2溢出中断
     SelectFreqChannel(0x00);//通道切换到第00通道;
 	//流速计1变量初始化
-    Flow1NumCount = 0x00;
-	Flow1NumCountx0 = 0x00;
-	Flow1NumCountx1 = 0x00;
+    Flow1NumCount        = 0x00;
+	Flow1NumCountx0      = 0x00;
+	Flow1NumCountx1      = 0x00;
 	Flow1TimeCountStart0 = 0x00;
 	Flow1TimeCountStartx = 0x00;
-	Flow1TimeCountEnd = 0x00;
-	Flow1TimeCountEndx = 0x00;
+	Flow1TimeCountEnd    = 0x00;
+	Flow1TimeCountEndx   = 0x00;
 	//流速计2变量初始化
-    Flow2NumCount = 0x00;
-	Flow2NumCountx0 = 0x00;
-	Flow2NumCountx1 = 0x00;
+    Flow2NumCount        = 0x00;
+	Flow2NumCountx0      = 0x00;
+	Flow2NumCountx1      = 0x00;
 	Flow2TimeCountStart0 = 0x00;
 	Flow2TimeCountStartx = 0x00;
-	Flow2TimeCountEnd = 0x00;
-	Flow2TimeCountEndx = 0x00;
+	Flow2TimeCountEnd    = 0x00;
+	Flow2TimeCountEndx   = 0x00;
 	
 	FlowSampleFlag = FALSE;	//清除流速计采样标志
 	StartTimer123();//打开计数器T1,T2,T3;
@@ -387,13 +378,24 @@ void SaveTorqueCountArrayToFlash(void)
  	uint8 lowaddr = MemoryAddressCounter%0x100;
 	uint8 *pt;
 	
-	if(!DataSaveEnableFlag){return;}
-	if(MemoryAddressCounter > MAX_ADDRESS - 20) {return;}
+	if(!DataSaveEnableFlag)
+	{
+	    return;
+	}
+	
+	if(MemoryAddressCounter > MAX_ADDRESS - 20) 
+	{
+	    return;
+	}
 	
 	if(TorqueArray_UseState)
-	{pt =(uint8*)TorqueCountArray1;}
+	{
+	    pt =(uint8*)TorqueCountArray1;
+	}
 	else 
-	{pt = (uint8*)TorqueCountArray2;}
+	{
+	    pt = (uint8*)TorqueCountArray2;
+	}
 	
 	if((0x100-lowaddr)>=20)
 	{
@@ -609,14 +611,14 @@ void MoveDenDataToSaveStruct(uint8 flag)
             SaveStruct.POWERFACTORREGAVG = 
                 (uint16)((SaveAidStruct.PowerFactor/SaveAidStruct.PowerNum/3)*1000);
     			
-    		SaveStruct.RMSVOLREGAVG = (uint16)((SaveAidStruct.Vol[0] +
-                   								    SaveAidStruct.Vol[1] +
-                   								    SaveAidStruct.Vol[2]) /
-                   								   (3*SaveAidStruct.PowerNum)*100);
-    		SaveStruct.RMSCURREGAVG = (uint16)((SaveAidStruct.Cur[0] +
-                   								    SaveAidStruct.Cur[1] +
-                   								    SaveAidStruct.Cur[2]) /
-                   								   (3*SaveAidStruct.PowerNum)*100);
+    		SaveStruct.RMSVOLREGAVG = (uint16)((SaveAidStruct.Vol[0]  +
+                   								SaveAidStruct.Vol[1]  +
+                   								SaveAidStruct.Vol[2]) /
+                   								(3*SaveAidStruct.PowerNum)*100);
+    		SaveStruct.RMSCURREGAVG = (uint16)((SaveAidStruct.Cur[0]  +
+                   								SaveAidStruct.Cur[1]  +
+                   								SaveAidStruct.Cur[2]) /
+                   								(3*SaveAidStruct.PowerNum)*100);
         }
 	}
 
