@@ -64,7 +64,7 @@ typedef  enum
     MenuG4=4
 }MenuGrade;
 //----------------------------------------------------------------------
-struct _VOLCURSTRUCTURE
+struct _VolCurStructure
 {
     uint16 Vol[3];//
     uint16 Cur[3];//带"//"的为稀疏型模式下要存的数据
@@ -75,7 +75,7 @@ struct SAVESTRUCTURE
 {
     uint16 head;///带"///"的为稀疏型模式下要存的数据
 	uint8  TimeBuffer[2];
-	struct _VOLCURSTRUCTURE VolCurStruct;///
+	struct _VolCurStructure VolCurStruct;///
 	uint16 TorqueCountAVG;///
 	uint16 CP;///
 	//------------------------------------------------
