@@ -106,10 +106,7 @@ void TWI_WriteByte(uint8 SlaveAddr,uint8 reg,uint8 data)
 	 TWI_Stop();
 }
 
-void TWI_WriteArray(uint8 SlaveAddr,
-	 				uint8 RegAddr,
-					uint8 data[],
-					uint8 num)
+void TWI_WriteArray(uint8 SlaveAddr, uint8 RegAddr, uint8 data[], uint8 num)
 {
  	 uint8 i;
 	 TWI_Start();
@@ -120,7 +117,7 @@ void TWI_WriteArray(uint8 SlaveAddr,
 	 TWI_Stop();
 }
 
-uint8 TWI_ReadByte(uint8 SlaveAddr,uint8 reg)
+uint8 TWI_ReadByte(uint8 SlaveAddr, uint8 reg)
 {
  	 uint8 REGR_RSUT;
  	 TWI_Start();
@@ -133,10 +130,7 @@ uint8 TWI_ReadByte(uint8 SlaveAddr,uint8 reg)
 	 return REGR_RSUT;
 }
 
-void TWI_ReadArray(uint8 SlaveAddr,
-	 			   uint8 reg,
-				   uint8 data[],
-				   uint8 num)
+void TWI_ReadArray(uint8 SlaveAddr, uint8 reg, uint8 data[], uint8 num)
 {
  	 uint8 REGR_RSUT;
 	 uint8 i;
@@ -145,8 +139,12 @@ void TWI_ReadArray(uint8 SlaveAddr,
 	 TWI_SendData_ACK(reg);
 	 TWI_Restart();
 	 TWI_SendSlaveAddr_R(SlaveAddr);
+	 
 	 for(i=0;i<num-1;i++)
-	 {data[i] = TWI_ReceiveData_ACK();}
+	 {
+	    data[i] = TWI_ReceiveData_ACK();
+	 }
+	 
 	 data[num-1] = TWI_ReceiveData_NACK();
 	 TWI_Stop();   
 }
@@ -184,8 +182,11 @@ void TimeAddOneMin(uint8 Timech[])
 	 {
         TMin = 0;
         THour++;
+        
         if(THour >= 24)
-        {THour = 0;}
+        {
+            THour = 0;
+        }
 	 }
 	 Timech[0] = DEC_BCD(TMin);
 	 Timech[1] = DEC_BCD(THour);
@@ -200,6 +201,7 @@ void TimeAddMins(uint8 Timech[],uint8 mins)
 	 THour = BCD_DEC(Timech[2]);
 	 
 	 TMin += mins;
+	 
 	 if(TMin >= 60)
 	 {
         TMin %= 60;
@@ -227,12 +229,15 @@ void TimeAddSecs(uint8 Timech[],uint8 secs)
 	 {
     	 TSec %= 60;
 		 TMin ++;
+		 
     	 if(TMin >= 60)
     	 {
             TMin %= 60;
             THour++;
             if(THour >= 24)
-            {THour = 0;}
+            {
+                THour = 0;
+            }
     	 }
 	 }
 	 
@@ -251,19 +256,21 @@ void ReadCurTimeToBuffer(uint8 TimeBuf[],uint8 num)
 {
  	 PCF8563_ReadArray(SecRegAddr,TimeBuf,num);
 	 while(num--)
-	 {TimeBuf[num] &= 0x7F;}
+	 {
+	    TimeBuf[num] &= 0x7F;
+	 }
 }
 
 void ReadCurDateToBuffer(uint8 DateBuf[],uint8 num)
 {
  	 PCF8563_ReadArray(DayRegAddr,DateBuf,num);
 	 while(num--)
-	 {DateBuf[num] &= 0x7F;}
+	 {
+	    DateBuf[num] &= 0x7F;
+	 }
 }
 
-bool CompareTime(uint8 TimeBuf1[],
-	 			 uint8 TimeBuf2[],
-				 uint8 num)
+bool CompareTime(uint8 TimeBuf1[], uint8 TimeBuf2[], uint8 num)
 
 {
  	 if(!memcmp(TimeBuf1,TimeBuf2,num))

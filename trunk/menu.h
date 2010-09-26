@@ -2,29 +2,29 @@
 #define __MENU_H
 #include "config.h"
 //----------------------------------------------------------------------
-#define  lcd_width						0x10
-#define  lcd_height						0x04
-#define  menu_up						-1
-#define  menu_down						1
-#define  menu_refresh					0
+#define  lcd_width					0x10
+#define  lcd_height					0x04
+#define  menu_up					-1
+#define  menu_down					1
+#define  menu_refresh				0
 //----------------------------------------------------------------------
 //宏定义
-#define	 LCD_ClearGDRAM					0
-#define	 LCD_Row1						1
-#define	 LCD_Row2						2
-#define	 LCD_Row3						3
-#define	 LCD_Row4						4
+#define	 LCD_ClearGDRAM				0
+#define	 LCD_Row1					1
+#define	 LCD_Row2					2
+#define	 LCD_Row3					3
+#define	 LCD_Row4					4
 //----------------------------------------------------------------------
-//#define  _T(x)						((fabs(x)>0.02)?(x):fabs(x))
-#define  _T(x)							((x>=0)?(x):0)
-#define  SPACE16						"\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20"
-#define  JUDGESTRNULL(s)				((s=="")?(SPACE16):(s))
-#define  LOADMENU(x,y)					LoadMenu(x,1,y)
-#define  Clear_ScreenTAB_Row(num)		memset(ScreenTAB.ScreenTable[num],' ',lcd_width);
-#define  MenuStrTab						uint8 str0[],\
-                                		uint8 str1[],\
-                                		uint8 str2[],\
-                                		uint8 str3[]
+//#define  _T(x)					((fabs(x)>0.02)?(x):fabs(x))
+#define  _T(x)						((x>=0)?(x):0)
+#define  SPACE16					"\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20"
+#define  JUDGESTRNULL(s)			((s=="")?(SPACE16):(s))
+#define  LOADMENU(x,y)				LoadMenu(x,1,y)
+#define  Clear_ScreenTAB_Row(num)	memset(ScreenTAB.ScreenTable[num],' ',lcd_width);
+#define  MenuStrTab					uint8 str0[],\
+                                	uint8 str1[],\
+                                	uint8 str2[],\
+                                	uint8 str3[]
 //=====================================================================
 //----------------------------------------------------------------------
 //菜单定义
@@ -336,17 +336,17 @@ struct MenuStateStruct
 };
 //----------------------------------------------------------------------
 
-void ShowMenuBuffer(void);
-void ScrollMenu(uint8 dirs);
-void LoadMenu(MenuStrTab, uint8 curnum, uint8 totalnum);
-void LoadMenuRowStr(uint8 MenuRowStr[],uint8 RowNum);
-void ClearScreenTab(uint8 s);
-void Set_MenuState(uint8 x1, uint8 x2, uint8 x3,uint8 x4);
-void Set_OldMenuState(uint8 x1, uint8 x2, uint8 x3, uint8 x4);
-void ShowMenu(void);  
-void lcd_ReverseVideo(int8 row);
-void SaveCurMenuState(void); 
-void LoadOldMenuState(void);
+void  ShowMenuBuffer(void);
+void  ScrollMenu(uint8 dirs);
+void  LoadMenu(MenuStrTab, uint8 curnum, uint8 totalnum);
+void  LoadMenuRowStr(uint8 MenuRowStr[],uint8 RowNum);
+void  ClearScreenTab(uint8 s);
+void  Set_MenuState(uint8 x1, uint8 x2, uint8 x3,uint8 x4);
+void  Set_OldMenuState(uint8 x1, uint8 x2, uint8 x3, uint8 x4);
+void  ShowMenu(void);  
+void  lcd_ReverseVideo(int8 row);
+void  SaveCurMenuState(void); 
+void  LoadOldMenuState(void);
 uint8 CompareMenuOld(void);
 uint8 CompareMenuState(uint8 s1,	 uint8 s2,uint8 s3,	uint8 s4, MenuGrade MenuG);
 uint8 CompareOldMenuState(uint8 s1, uint8 s2, uint8 s3, uint8 s4, MenuGrade MenuG);
