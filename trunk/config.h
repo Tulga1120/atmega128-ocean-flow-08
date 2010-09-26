@@ -93,7 +93,7 @@ struct SaveStructure
 };
 
 
-struct SAVEAIDSTRUCT
+struct SaveAidStructure
 {
     float  Power;
 	float  PowerFactor;

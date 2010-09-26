@@ -7,7 +7,7 @@ extern uint8  PCArray[MAXDATAWIDTH];
 extern const  uint8 AddrTable[4];
 extern bool   DataSaveEnableFlag;
 extern struct SaveStructure SaveStruct;
-extern struct SAVEAIDSTRUCT SaveAidStruct;
+extern struct SaveAidStructure SaveAidStruct;
 extern uint8  MemoryStatusREG;
 extern uint32 MemoryAddressCounter;
 
