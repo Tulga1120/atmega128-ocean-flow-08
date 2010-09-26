@@ -38,7 +38,7 @@ typedef  enum
     NOTCHANGE
 }ChangeType;
 //----------------------------------------------------------------------
-typedef uint8       AlarmType;
+typedef uint8               AlarmType;
 #define  NOTALARM  	  	 	0x00
 #define  ALARMED_10MINS  	0x01
 #define  ALARMED_20SECS     0x02
