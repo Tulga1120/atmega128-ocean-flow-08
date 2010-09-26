@@ -11,12 +11,7 @@
 //用于调试
 extern uint8 CS5463DebugEnable;
 //-----------------------------------------------------
-//辅助调试变量
-SampleType SampleModeFlagAid = SampleStop;
-SampleType SampleModeFlagOld = SampleStop;
-
 extern struct IntegrationStructure IntegrationStruct;
-uint8 IntegrationUPDF = FALSE;
 
 extern float  TorqueGain;
 extern uint16 TorqueOffset;
@@ -66,10 +61,7 @@ extern int16  TorqueCount;
 extern float  RotateGain;
 extern float  RotateOffset;
 //-----------------------------------------------------
-//-----------------------------------------------------
-//本地变量
-uint8  sti = 0;
-uint16 EepromTimeCounter = 0x00;
+
 //-----------------------------------------------------
 extern uint16 BgLightDelayTime;
 extern uint32 AddrCounterLastSaved;
