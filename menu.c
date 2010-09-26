@@ -121,12 +121,12 @@ void ScrollMenu(uint8 dirs)
 
 void ClearScreenTab(uint8 s)
 {
- 	 memset(ScreenTAB.ScreenTable,s,lcd_width*lcd_height);
+ 	 memset(ScreenTAB.ScreenTable,s,LCD_HEIGHT * LCD_WIDTH);
 }
 
 void LoadMenuRowStr(uint8 MenuRowStr[],uint8 RowNum)
 {
-    memcpy(ScreenTAB.ScreenTable[RowNum],MenuRowStr,lcd_width);
+    memcpy(ScreenTAB.ScreenTable[RowNum],MenuRowStr,LCD_HEIGHT);
 }
 
 void Set_MenuState(uint8 x1,uint8 x2,uint8 x3,uint8 x4)
@@ -149,23 +149,23 @@ void lcd_ReverseVideo(uint8 row)
 {
  	switch(row)
 	{
-        case LCD_ClearGDRAM: 
+        case LCD_CLS_GD_RAM: 
             con_disp(0x00,0x00,0x00,0x00); 
             break;
         
-        case LCD_Row1:       
+        case LCD_ROW1:       
             con_disp(0xFF,0x00,0x00,0x00); 
             break;
         
-        case LCD_Row2:       
+        case LCD_ROW2:       
             con_disp(0x00,0xFF,0x00,0x00); 
             break;
         
-        case LCD_Row3:       
+        case LCD_ROW3:       
             con_disp(0x00,0x00,0xFF,0x00);
             break;
         
-        case LCD_Row4:       
+        case LCD_ROW4:       
             con_disp(0x00,0x00,0x00,0xFF); 
             break;
         
@@ -182,9 +182,9 @@ void ShowMenuBuffer(void)
     lcd_wrCmd(extend_function);
 	lcd_wrCmd(fund_function);
 	
-	for(i=1;i<=lcd_height;i++)
+	for(i=1;i<=LCD_WIDTH;i++)
 	{
-	    lcd_WriteCharArray(_ADDR(i,1),ScreenTAB.ScreenTable[i-1],lcd_width);
+	    lcd_WriteCharArray(_ADDR(i,1),ScreenTAB.ScreenTable[i-1],LCD_HEIGHT);
 	}
 	
 	lcd_wrCmd(lcd_ShowState | Show_ON);
@@ -258,7 +258,7 @@ void ShowMenu(void)
     			case 0:
     				if(!CompareMenuOld())
            			{
-       					LOADMENU(Menu_WelcomeSCR,Menu_WelcomeSCR_num);//»¶Ó­ÆÁÄ»
+       					LOADMENU(MENU_WELCOME_STR, MENU_WELCOME_NUM);//»¶Ó­ÆÁÄ»
        					SaveCurMenuState();
     				}
                    	ShowMenuBuffer();
@@ -505,7 +505,7 @@ void ShowMenu(void)
                         if(CompareOldMenuState(0x01,0x01,0x00,0x00,MenuG2) &&
 						   PCArray[0] == 0x01)
 						{
-    						ScreenTAB.CurNum = lcd_height;
+    						ScreenTAB.CurNum = LCD_WIDTH;
 						}
 						else if(CompareOldMenuState(0x00,0x00,0x00,0x00,MenuG1) &&
         						OldMenuState.MG2 >= 1 && OldMenuState.MG2 <= 3)
