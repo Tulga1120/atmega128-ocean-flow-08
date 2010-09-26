@@ -36,8 +36,8 @@
         						    "  中国海洋大学  "
 //----------------------------------------------------------------------
 //发电机参数(1),对应菜单状态变量:00-01-XX-XX
-#define  Menu_VolCur_num		    0x04
-#define  Menu_VolCur		 	    "  三相电压电流  ",\
+#define  MENU_VOL_CUR_NUM		    0x04
+#define  MENU_VOL_CUR_STR		 	"  三相电压电流  ",\
 		 						    "Va:     Ia:     ",\
         		 				    "Vb:     Ib:     ",\
         						    "Vc:     Ic:     "
