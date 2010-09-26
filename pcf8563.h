@@ -5,48 +5,48 @@
 /**********************************************************
  *                     TWI define                         *
  **********************************************************/
-#define TWI_START        0x08
-#define TWI_RESTART      0x10
-#define MT_SLA_ACK   	 0x18
-#define MT_SLA_NACK  	 0x20
-#define MT_DATA_ACK  	 0x28
-#define MT_DATA_NACK 	 0x30
-#define MR_SLA_ACK   	 0x40
-#define MR_SLA_NACK   	 0x48
-#define MR_DATA_ACK  	 0x50
-#define MR_DATA_NACK  	 0x58
+#define TWI_START                               0x08
+#define TWI_RESTART                             0x10
+#define MT_SLA_ACK   	                        0x18
+#define MT_SLA_NACK  	                        0x20
+#define MT_DATA_ACK  	                        0x28
+#define MT_DATA_NACK 	                        0x30
+#define MR_SLA_ACK   	                        0x40
+#define MR_SLA_NACK   	                        0x48
+#define MR_DATA_ACK  	                        0x50
+#define MR_DATA_NACK  	                        0x58
 
 //PCF8563¼Ä´æÆ÷µØÖ·
-#define PCF8563Addr		 0xA3
-#define CtrlStatus_Reg1  0x00
-#define CtrlStatus_Reg2  0x01
-#define SecRegAddr		 0x02
-#define MinRegAddr		 0x03
-#define HourRegAddr		 0x04
-#define DayRegAddr		 0x05
-#define WeekdayRegAddr	 0x06
-#define MonthRegAddr	 0x07
-#define YearRegAddr	 	 0x08
-#define MinAlarmAddr	 0x09
-#define HourAlarmAddr	 0x0A
-#define DayAlarmAddr	 0x0B
-#define WeekdayAlarmAddr 0x0C
-#define CLKOut_Control	 0x0D
-#define Timer_Control	 0x0E
-#define TimerReg		 0x0F
+#define PCF8563Addr		                        0xA3
+#define CtrlStatus_Reg1                         0x00
+#define CtrlStatus_Reg2                         0x01
+#define SecRegAddr		                        0x02
+#define MinRegAddr		                        0x03
+#define HourRegAddr		                        0x04
+#define DayRegAddr		                        0x05
+#define WeekdayRegAddr	                        0x06
+#define MonthRegAddr	                        0x07
+#define YearRegAddr	 	                        0x08
+#define MinAlarmAddr	                        0x09
+#define HourAlarmAddr	                        0x0A
+#define DayAlarmAddr	                        0x0B
+#define WeekdayAlarmAddr                        0x0C
+#define CLKOut_Control	                        0x0D
+#define Timer_Control	                        0x0E
+#define TimerReg		                        0x0F
 
-#define PCF_AIE			 1
+#define PCF_AIE			                        1
 
-//#define BGLIGHTDELAYTIME 600
+//#define BGLIGHTDELAYTIME                      600
 //-------------------------------------------------------------------
-#define PCF8563AlarmEn() 	 				            PCF8563_WriteByte(CtrlStatus_Reg2,BIT(PCF_AIE));\
-											            EIMSK |= BIT(INT5)
-#define PCF8563AlarmDisEn()  				            PCF8563_WriteByte(CtrlStatus_Reg2,0x00);\
-											            EIMSK &= ~BIT(INT5)
-#define PCF8563_ReadByte(RegAddr)						TWI_ReadByte(PCF8563Addr,RegAddr)
-#define PCF8563_ReadArray(StartReg,data,num)			TWI_ReadArray(PCF8563Addr,StartReg,data,num)
-#define PCF8563_WriteByte(RegAddr,data)					TWI_WriteByte(PCF8563Addr,RegAddr,data)
-#define PCF8563_WriteArray(RegAddr,ch,num) 				TWI_WriteArray(PCF8563Addr,RegAddr,ch,num)
+#define PCF8563AlarmEn() 	 				    PCF8563_WriteByte(CtrlStatus_Reg2,BIT(PCF_AIE));\
+											    EIMSK |= BIT(INT5)
+#define PCF8563AlarmDisEn()  				    PCF8563_WriteByte(CtrlStatus_Reg2,0x00);\
+											    EIMSK &= ~BIT(INT5)
+#define PCF8563_ReadByte(RegAddr)				TWI_ReadByte(PCF8563Addr,RegAddr)
+#define PCF8563_ReadArray(StartReg,data,num)	TWI_ReadArray(PCF8563Addr,StartReg,data,num)
+#define PCF8563_WriteByte(RegAddr,data)			TWI_WriteByte(PCF8563Addr,RegAddr,data)
+#define PCF8563_WriteArray(RegAddr,ch,num) 		TWI_WriteArray(PCF8563Addr,RegAddr,ch,num)
 //-------------------------------------------------------------------
 
 void  TWI_Init(void);
