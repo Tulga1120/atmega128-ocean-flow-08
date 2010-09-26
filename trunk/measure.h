@@ -9,6 +9,9 @@
 #define	 THEFLOW1			            0x01
 #define	 THEFLOW2			            0x02
 
+#define  DenSaveStructLen               18
+#define  SpaSaveStructLen               32
+#define  SaveStructDiffLen              20
 
 //#define  Flow1Gain				    0.964
 //Flow1Gain 小于 1.0时相当于提高流速

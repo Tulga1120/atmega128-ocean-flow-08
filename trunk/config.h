@@ -91,9 +91,7 @@ struct SAVESTRUCTURE
 	uint16 tail;//在密集型模式作为尾来存储
 	//------------------------------------------------
 };
-#define  DenSaveStructLen     18
-#define  SpaSaveStructLen     32
-#define  SaveStructDiffLen    20
+
 
 struct SAVEAIDSTRUCT
 {
