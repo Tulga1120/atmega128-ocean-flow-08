@@ -14,10 +14,10 @@ void lcd_PortInit(void)
 
 void lcd_init(void)
 {
-	lcd_wrCmd(fund_function );
-    lcd_wrCmd(lcd_Clear );
-    lcd_wrCmd(point_set | Cursor_right );
-    lcd_wrCmd(lcd_ShowState | Show_ON );
+	lcd_wrCmd(fund_function);
+    lcd_wrCmd(lcd_Clear);
+    lcd_wrCmd(point_set | Cursor_right);
+    lcd_wrCmd(lcd_ShowState | Show_ON);
 	lcd_ReverseVideo(LCD_ClearGDRAM);
     lcd_bglight_enable();
 }
