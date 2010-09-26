@@ -1,6 +1,6 @@
 #ifndef __MENU_H
 #define __MENU_H
-#include "config.h"
+
 //----------------------------------------------------------------------
 #define  lcd_width					0x10
 #define  lcd_height					0x04
