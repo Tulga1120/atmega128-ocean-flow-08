@@ -184,6 +184,7 @@ void CmdStringResponse(void)
     			CurrentPageNum = EndPageNum;
 			}
     		break;
+    		
 		case 2:
     		if(!strcmp(CmdStringArray[0],uploadpageStr))// 传送数据
     		{
@@ -203,6 +204,7 @@ void CmdStringResponse(void)
 				CurrentPageNum = temp;
 			}
     		break;
+    		
 		case 3:
 			if(!strcmp(CmdStringArray[0],uploadpageStr))//传送数据
 			{
@@ -242,6 +244,7 @@ void CmdStringResponse(void)
 				}
 			}
 			break;
+			
     	default:break;
 	}
 	
