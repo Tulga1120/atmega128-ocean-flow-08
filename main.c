@@ -3,10 +3,19 @@
 struct SaveStructure SaveStruct;
 struct SaveAidStructure SaveAidStruct;
 //-----------------------------------------------------
+//本地变量
+uint8  sti = 0;
+uint16 EepromTimeCounter = 0x00;
+uint8  IntegrationUPDF   = FALSE;
+//-----------------------------------------------------
 //用于调试
 float ACTIVEPREG_Debug[3];
 float RMSVOLREG_Debug[3];
 float RMSCURREG_Debug[3];
+
+//辅助调试变量
+SampleType SampleModeFlagAid = SampleStop;
+SampleType SampleModeFlagOld = SampleStop;
 
 //-----------------------------------------------------
 //主函数
