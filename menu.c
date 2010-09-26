@@ -291,7 +291,7 @@ void ShowMenu(void)
     			case 2:
     				if(!CompareMenuOld())
            			{
-       					LOADMENU(Menu_P_PF,Menu_P_PF_num);//三相功率显示菜单
+       					LOADMENU(MENU_POW_PF_STR, MENU_POW_PF_NUM);//三相功率显示菜单
        					SaveCurMenuState();
     					CS5463UPDF |= TRUE;
     					return;
@@ -318,7 +318,7 @@ void ShowMenu(void)
     			case 3:
     				if(!CompareMenuOld())
            			{
-       					LOADMENU(Menu_FlowSpeed,Menu_FlowSpeed_num);//流速显示菜单
+       					LOADMENU(MENU_FLOW_SPEED_STR, MENU_FLOW_SPEED_NUM);//流速显示菜单
        					SaveCurMenuState();
     					MeasureUPDF = TRUE;
     					return;
@@ -359,7 +359,7 @@ void ShowMenu(void)
     			case 4:
     				if(!CompareMenuOld())
            			{
-       					LOADMENU(Menu_Torque_n,Menu_Torque_n_num);//转速转矩显示菜单
+       					LOADMENU(MENU_TORQUE_STR, MENU_TORQUE_NUM);//转速转矩显示菜单
        					SaveCurMenuState();
     					MeasureUPDF = TRUE;
     					return;

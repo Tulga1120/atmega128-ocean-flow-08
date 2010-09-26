@@ -43,22 +43,22 @@
         						    "Vc:     Ic:     "
 //----------------------------------------------------------------------
 //发电机参数(2),对应菜单状态变量:00-02-XX-XX
-#define  Menu_P_PF_num			    0x04
-#define  Menu_P_PF		 		    "功率和功率因数  ",\
+#define  MENU_POW_PF_NUM			0x04
+#define  MENU_POW_PF_STR		 	"功率和功率因数  ",\
 		 						    "Pa:     PFa:    ",\
         		 				    "Pb:     PFb:    ",\
         						    "Pc:     PFc:    "
 //----------------------------------------------------------------------
 //流速计参数,对应菜单状态变量:00-03-XX-XX
-#define  Menu_FlowSpeed_num		    0x04
-#define  Menu_FlowSpeed	 	  	    "  流速计参数    ",\
+#define  MENU_FLOW_SPEED_NUM		0x04
+#define  MENU_FLOW_SPEED_STR	 	"  流速计参数    ",\
         		 				    "Vf1:            ",\
         						    "Vf2:            ",\
         						    "Vf3:            "
 //----------------------------------------------------------------------
 //扭矩和转速,对应菜单状态变量:00-04-XX-XX
-#define  Menu_Torque_n_num		    0x04
-#define  Menu_Torque_n	 	  	    "  扭矩和转速    ",\
+#define  MENU_TORQUE_NUM		    0x04
+#define  MENU_TORQUE_STR	 	  	"  扭矩和转速    ",\
         		 				    "T :             ",\
         						    "n :             ",\
         						    "PT:             "
