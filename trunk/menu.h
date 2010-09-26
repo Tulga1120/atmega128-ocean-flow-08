@@ -15,7 +15,6 @@
 #define	 LCD_Row3					3
 #define	 LCD_Row4					4
 //----------------------------------------------------------------------
-//#define  _T(x)					((fabs(x)>0.02)?(x):fabs(x))
 #define  _T(x)						((x>=0)?(x):0)
 #define  SPACE16					"\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20"
 #define  JUDGESTRNULL(s)			((s=="")?(SPACE16):(s))
@@ -151,7 +150,7 @@
 								    "4.流速02偏置    "	
 //----------------------------------------------------------------------
 //扭矩转速传感器参数配置菜单,对应菜单状态变量:04-00-04-XX
-#define  ParaCfg_TorRot_num	0x04
+#define  ParaCfg_TorRot_num	        0x04
 #define  ParaCfg_TorRot			    "1.扭矩增益      ",\
 		 						    "2.扭矩偏置      ",\
 								    "3.转速增益      ",\
