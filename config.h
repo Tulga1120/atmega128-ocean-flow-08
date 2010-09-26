@@ -71,7 +71,7 @@ struct _VolCurStructure
 };
 #define  VolCurStructLen  12        //未使用
 
-struct SAVESTRUCTURE
+struct SaveStructure
 {
     uint16 head;///带"///"的为稀疏型模式下要存的数据
 	uint8  TimeBuffer[2];
@@ -110,7 +110,7 @@ struct SAVEAIDSTRUCT
 	uint8  TorqueNum;
 };
 //----------------------------------------------------------------------
-struct INTEGRATIONSTRUCTURE
+struct IntegrationStructure
 {
     float OverallPower;
     float TorquePower;

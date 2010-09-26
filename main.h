@@ -15,7 +15,7 @@ extern uint8 CS5463DebugEnable;
 SampleType SampleModeFlagAid = SampleStop;
 SampleType SampleModeFlagOld = SampleStop;
 
-extern struct INTEGRATIONSTRUCTURE IntegrationStruct;
+extern struct IntegrationStructure IntegrationStruct;
 uint8 IntegrationUPDF = FALSE;
 
 extern float  TorqueGain;
@@ -83,7 +83,7 @@ extern uint32 OldMemoryAddressCounter;
 extern uint8  CurrentTimeBuf[4];
 extern uint8  TimeBufForDen[3];
 extern uint8  TimeBufForSpa[3];
-struct SAVESTRUCTURE SaveStruct;
+struct SaveStructure SaveStruct;
 struct SAVEAIDSTRUCT SaveAidStruct;
 //-----------------------------------------------------
 //"uart.c"相关变量
