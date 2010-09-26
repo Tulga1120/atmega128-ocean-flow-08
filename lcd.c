@@ -61,10 +61,10 @@ void lcd_WriteCharArray(uint8 addr,uint8 chr[],uint8 num)
 {
     uint8 i;
     
-    lcd_wrAddr( addr );
+    lcd_wrAddr(addr);
     for(i=0;i<num;i++)
     {
-        lcd_wrByte( chr[i] );
+        lcd_wrByte(chr[i]);
     }
 }
 
@@ -72,10 +72,10 @@ void lcd_wrSpace(uint8 addr,uint8 num)
 {
     uint8 i;
     
-    lcd_wrAddr( addr );
+    lcd_wrAddr(addr);
     for(i=0;i<num;i++)
     {
-        lcd_wrByte( 0x20 );
+        lcd_wrByte(0x20);
     }
 }
 
@@ -102,8 +102,8 @@ void con_disp (uint8 data1, uint8 data2,	uint8 data3, uint8 data4)
            lcd_wrCmd (j);
            lcd_wrCmd (i);
            lcd_wrCmd (fund_function);//基本指令集
-           lcd_wrByte (data2);
-           lcd_wrByte (data2);
+           lcd_wrByte(data2);
+           lcd_wrByte(data2);
        }
    }
    for(j=0x80;j<0x90;j++)
@@ -114,8 +114,8 @@ void con_disp (uint8 data1, uint8 data2,	uint8 data3, uint8 data4)
            lcd_wrCmd (j);
            lcd_wrCmd (i);
            lcd_wrCmd (fund_function);//基本指令集
-           lcd_wrByte (data3);
-           lcd_wrByte (data3);
+           lcd_wrByte(data3);
+           lcd_wrByte(data3);
        }
    }
    for(j=0x90;j<0xA0;j++)
@@ -126,8 +126,8 @@ void con_disp (uint8 data1, uint8 data2,	uint8 data3, uint8 data4)
            lcd_wrCmd (j);
            lcd_wrCmd (i);
            lcd_wrCmd (fund_function);//基本指令集
-           lcd_wrByte (data4);
-           lcd_wrByte (data4);
+           lcd_wrByte(data4);
+           lcd_wrByte(data4);
        }
    }
    lcd_wrCmd (extend_function | Picture_ON);

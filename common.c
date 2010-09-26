@@ -1,8 +1,8 @@
-
 #include "config.h"
+
 //------------------------------------------------------------------
-extern uint8 PCArray[MAXDATAWIDTH];
 int16 status;
+extern uint8 PCArray[MAXDATAWIDTH];
 extern SampleType SampleModeFlag;
 extern uint16 TorqueCountArray1[10];
 extern uint16 TorqueCountArray2[10];
