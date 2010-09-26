@@ -30,7 +30,7 @@ extern SampleType SampleModeFlagAid;
 extern uint16 ADCREG;
 //-------------------------------------------------
 extern uint16 BGLIGHTDELAYTIME;
-extern struct INTEGRATIONSTRUCTURE IntegrationStruct;
+extern struct IntegrationStructure IntegrationStruct;
 //-------------------------------------------------
 extern float  Flow1Time;
 extern float  Flow2Time;

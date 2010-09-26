@@ -6,7 +6,7 @@ extern uint16 BGLIGHTDELAYTIME;
 extern uint8  PCArray[MAXDATAWIDTH];
 extern const  uint8 AddrTable[4];
 extern bool   DataSaveEnableFlag;
-extern struct SAVESTRUCTURE SaveStruct;
+extern struct SaveStructure SaveStruct;
 extern struct SAVEAIDSTRUCT SaveAidStruct;
 extern uint8  MemoryStatusREG;
 extern uint32 MemoryAddressCounter;
@@ -69,7 +69,7 @@ SampleType SampleModeFlag = SampleStop;
 uint16 T3OCRA_Count = 0x00;
 uint16 T3OCRB_Count = 0x00;
 uint8  SampleDenModeNum = 0x00;
-struct INTEGRATIONSTRUCTURE IntegrationStruct;
+struct IntegrationStructure IntegrationStruct;
 //-----------------------------------------------------
 //可调变量
 float  TorqueGain;
