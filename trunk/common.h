@@ -23,7 +23,7 @@
 #define  READ_REGBIT(REG,REGBIT) 	(((REG) >> (REGBIT)) & BIT_NUM0)
 #define  ClearStruct(st)			memset(&(st),0x00,sizeof(st))
 //----------------------------------------------------------------------
-//EEPROM中数据的存储地址
+//EEPROM中数据的存储地址 gain:增益 offset:偏置
 //------------------------------------
 #define  TorqueGain_Addr	        0x30
 #define  TorqueOffset_Addr	        0x34
@@ -34,7 +34,7 @@
 #define  Flow1Offset_Addr	        0x44
 #define  Flow2Gain_Addr	  	        0x48
 #define  Flow2Offset_Addr	        0x4C
-//------------------------------------
+//------------------------------------gagain
 #define  VolGain_A_Addr		        0x50
 #define  VolOffset_A_Addr	        0x54
 #define  CurGain_A_Addr		        0x58
