@@ -2,24 +2,24 @@
 #define __MENU_H
 
 //----------------------------------------------------------------------
-#define  lcd_width					0x10
-#define  lcd_height					0x04
-#define  menu_up					-1
-#define  menu_down					1
-#define  menu_refresh				0
+#define  LCD_WIDTH					0x10
+#define  LCD_HEIGHT					0x04
+#define  MENU_UP					-1
+#define  MENU_DOWN					1
+#define  MENU_REFRESH				0
 //----------------------------------------------------------------------
 //宏定义
-#define	 LCD_ClearGDRAM				0
-#define	 LCD_Row1					1
-#define	 LCD_Row2					2
-#define	 LCD_Row3					3
-#define	 LCD_Row4					4
+#define	 LCD_CLS_GD_RAM				0
+#define	 LCD_ROW1					1
+#define	 LCD_ROW2					2
+#define	 LCD_ROW3					3
+#define	 LCD_ROW4					4
 //----------------------------------------------------------------------
 #define  _T(x)						((x>=0)?(x):0)
 #define  SPACE16					"\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20"
 #define  JUDGESTRNULL(s)			((s=="")?(SPACE16):(s))
 #define  LOADMENU(x,y)				LoadMenu(x,1,y)
-#define  Clear_ScreenTAB_Row(num)	memset(ScreenTAB.ScreenTable[num],' ',lcd_width);
+#define  Clear_ScreenTAB_Row(num)	memset(ScreenTAB.ScreenTable[num],' ',LCD_WIDTH);
 #define  MenuStrTab					uint8 str0[],\
                                 	uint8 str1[],\
                                 	uint8 str2[],\
@@ -29,8 +29,8 @@
 //菜单定义
 //----------------------------------------------------------------------
 //欢迎屏幕,对应菜单状态变量:00-00-XX-XX
-#define  Menu_WelcomeSCR_num	    0x04
-#define  Menu_WelcomeSCR	 	    "    欢迎使用    ",\
+#define  MENU_WELCOME_NUM	        0x04
+#define  MENU_WELCOME_STR	 	    "    欢迎使用    ",\
         		 				    "潮流发电测控装置",\
         						    "                ",\
         						    "  中国海洋大学  "
@@ -322,7 +322,7 @@
 //----------------------------------------------------------------------
 struct SCRTAB
 {
-    uint8 ScreenTable[lcd_height][lcd_width]; //存放数据
+    uint8 ScreenTable[LCD_HEIGHT][LCD_WIDTH]; //存放数据
 	uint8 CurNum;      //当前记录
 	uint8 TotalNum;    //总记录个数
 };

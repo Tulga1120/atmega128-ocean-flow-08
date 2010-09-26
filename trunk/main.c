@@ -23,7 +23,7 @@ void main(void)
 { 	 
 	init_devices();
 	
-	LOADMENU(Menu_WelcomeSCR,Menu_WelcomeSCR_num);
+	LOADMENU(MENU_WELCOME_STR, MENU_WELCOME_NUM);
 	ShowMenuBuffer();
 
 	ReadCurTimeToBuffer(CurrentTimeBuf,0x04);

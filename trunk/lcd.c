@@ -18,7 +18,7 @@ void lcd_init(void)
     lcd_wrCmd(lcd_Clear);
     lcd_wrCmd(point_set | Cursor_right);
     lcd_wrCmd(lcd_ShowState | Show_ON);
-	lcd_ReverseVideo(LCD_ClearGDRAM);
+	lcd_ReverseVideo(LCD_CLS_GD_RAM);
     lcd_bglight_enable();
 }
 
