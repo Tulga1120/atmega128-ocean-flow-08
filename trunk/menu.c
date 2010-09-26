@@ -269,7 +269,7 @@ void ShowMenu(void)
     			case 1:
     				if(!CompareMenuOld())
            			{
-       					LOADMENU(Menu_VolCur,Menu_VolCur_num);//三相电压,电流显示菜单
+       					LOADMENU(MENU_VOL_CUR_STR, MENU_VOL_CUR_NUM);//三相电压,电流显示菜单
     					SaveCurMenuState();
     				}
                     //------------------------------------------------------------
