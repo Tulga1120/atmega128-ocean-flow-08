@@ -68,7 +68,7 @@ extern float  RotateOffset;
 //-----------------------------------------------------
 //-----------------------------------------------------
 //本地变量
-uint8 sti = 0;
+uint8  sti = 0;
 uint16 EepromTimeCounter = 0x00;
 //-----------------------------------------------------
 extern uint16 BgLightDelayTime;
@@ -102,9 +102,9 @@ extern bool  HotKeyState;
 //-----------------------------------------------------
 //"PCF8563.c"相关变量
 extern AlarmType TimeAlarm;
-extern bool   TimeUPDF;
-extern uint8  PCF8563OldSec;
-extern uint16 BGLIGHTDELAYTIME;
+extern bool      TimeUPDF;
+extern uint8     PCF8563OldSec;
+extern uint16    BGLIGHTDELAYTIME;
 //-----------------------------------------------------
 //"menu.c"相关变量
 extern bool MenuStateUPDF;

@@ -3,12 +3,12 @@
 extern uint16 Uart_DelayTime;
 extern uint16 BGLIGHTDELAYTIME;
 
-extern uint8 PCArray[MAXDATAWIDTH];
-extern const uint8 AddrTable[4];
-extern bool DataSaveEnableFlag;
+extern uint8  PCArray[MAXDATAWIDTH];
+extern const  uint8 AddrTable[4];
+extern bool   DataSaveEnableFlag;
 extern struct SAVESTRUCTURE SaveStruct;
 extern struct SAVEAIDSTRUCT SaveAidStruct;
-extern uint8 MemoryStatusREG;
+extern uint8  MemoryStatusREG;
 extern uint32 MemoryAddressCounter;
 
 extern float ACTIVEPREG[3];
@@ -19,75 +19,75 @@ extern float POWERFACTORREG[3];
 extern uint8 CurrentTimeBuf[4];
 //-----------------------------------------------------
 //转矩相关变量
-bool TorqueRotateSampleFlag = FALSE;
-uint8 TorqueOvfCount = 0x00;
+bool   TorqueRotateSampleFlag = FALSE;
+uint8  TorqueOvfCount = 0x00;
 uint16 TorqueCountArray1[10];
 uint16 TorqueCountArray2[10];
-bool TorqueArray_UseState = FALSE;
+bool   TorqueArray_UseState = FALSE;
 signed int TorqueCount;
 //----------------------------------------------------
 //转速相关变量
-float RotateTime;
+float  RotateTime;
 uint32 RotateTimeCountStart0 = 0x00;
 uint32 RotateTimeCountStartx = 0x00;
 uint32 RotateTimeCountEnd = 0x00;
 uint32 RotateTimeCountEndx = 0x00;
-uint8 RotateNumCount = 0x00;
-uint8 RotateNumCountx0 = 0x00;
-uint8 RotateNumCountx1 = 0x00;
+uint8  RotateNumCount = 0x00;
+uint8  RotateNumCountx0 = 0x00;
+uint8  RotateNumCountx1 = 0x00;
 
 //----------------------------------------------------
 //流速计1相关变量
-float Flow1Time;
+float  Flow1Time;
 uint32 Flow1TimeCountStart0 = 0x00;
 uint32 Flow1TimeCountStartx = 0x00;
 uint32 Flow1TimeCountEnd = 0x00;
 uint32 Flow1TimeCountEndx = 0x00;
-uint8 Flow1NumCount = 0x00;
-uint8 Flow1NumCountx0 = 0x00;
-uint8 Flow1NumCountx1 = 0x00;
+uint8  Flow1NumCount = 0x00;
+uint8  Flow1NumCountx0 = 0x00;
+uint8  Flow1NumCountx1 = 0x00;
 
 //----------------------------------------------------
 //流速计2相关变量
-float Flow2Time;
+float  Flow2Time;
 uint32 Flow2TimeCountStart0 = 0x00;
 uint32 Flow2TimeCountStartx = 0x00;
 uint32 Flow2TimeCountEnd = 0x00;
 uint32 Flow2TimeCountEndx = 0x00;
-uint8 Flow2NumCount = 0x00;
-uint8 Flow2NumCountx0 = 0x00;
-uint8 Flow2NumCountx1 = 0x00;
-bool FlowSampleFlag = FALSE;
+uint8  Flow2NumCount = 0x00;
+uint8  Flow2NumCountx0 = 0x00;
+uint8  Flow2NumCountx1 = 0x00;
+bool   FlowSampleFlag = FALSE;
 
 //----------------------------------------------------
 //相关变量
 uint16 ADCREG = 0x00;
-bool  MeasureUPDF = FALSE;
-bool BatVolUPDF = FALSE;
-bool FirstIntoSpaTorRotSample;
+bool   MeasureUPDF = FALSE;
+bool   BatVolUPDF = FALSE;
+bool   FirstIntoSpaTorRotSample;
 SampleType SampleModeFlag = SampleStop;
 uint16 T3OCRA_Count = 0x00;
 uint16 T3OCRB_Count = 0x00;
-uint8 SampleDenModeNum = 0x00;
+uint8  SampleDenModeNum = 0x00;
 struct INTEGRATIONSTRUCTURE IntegrationStruct;
 //-----------------------------------------------------
 //可调变量
-float TorqueGain;
+float  TorqueGain;
 uint16 TorqueOffset;
-float RotateGain;
-float RotateOffset;
-float Flow1Gain;
-float Flow1Offset;
-float Flow2Gain;
-float Flow2Offset;
+float  RotateGain;
+float  RotateOffset;
+float  Flow1Gain;
+float  Flow1Offset;
+float  Flow2Gain;
+float  Flow2Offset;
 
-float Flow1_Proportion = 0.2;
-float Flow2_Proportion = 0.2;
-float Rotate_Proportion	= 1.0;
-float Torque_Proportion	= 1.0;
-float Wheel_A = 1.0;
-float Wheel_D = 1.5;
-float Wheel_L = 1.3;
+float  Flow1_Proportion = 0.2;
+float  Flow2_Proportion = 0.2;
+float  Rotate_Proportion	= 1.0;
+float  Torque_Proportion	= 1.0;
+float  Wheel_A = 1.0;
+float  Wheel_D = 1.5;
+float  Wheel_L = 1.3;
 uint16 Torque_Threshold = 5000;
 //-----------------------------------------------------
 uint16 average(uint16 data[],uint8 num)
@@ -624,12 +624,8 @@ void MoveDenDataToSaveStruct(uint8 flag)
 
 void AddPowerParaToSaveAidStruct(void)
 {
-    SaveAidStruct.Power += ACTIVEPREG[0] +
-                           ACTIVEPREG[1] +
-                           ACTIVEPREG[2]; 
-    SaveAidStruct.PowerFactor += POWERFACTORREG[0] +
-                                 POWERFACTORREG[1] +
-                                 POWERFACTORREG[2]; 
+    SaveAidStruct.Power += ACTIVEPREG[0] + ACTIVEPREG[1] + ACTIVEPREG[2]; 
+    SaveAidStruct.PowerFactor += POWERFACTORREG[0] + POWERFACTORREG[1] + POWERFACTORREG[2]; 
     SaveAidStruct.Vol[0] += RMSVOLREG[0];
     SaveAidStruct.Vol[1] += RMSVOLREG[1];
     SaveAidStruct.Vol[2] += RMSVOLREG[2];
@@ -673,10 +669,7 @@ void ModifyTorqueCountArray(void)
 	}
 }
 
-float emendation(float BaseValue,
-                 float MaxVal,
-				 float Diff,
-				 float CurValue)
+float emendation(float BaseValue, float MaxVal,	 float Diff, float CurValue)
 {
     return CurValue + (CurValue - BaseValue)*Diff/(MaxVal-BaseValue);
 }
