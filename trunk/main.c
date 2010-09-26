@@ -1,5 +1,7 @@
 #include "main.h"
 
+struct SaveStructure SaveStruct;
+struct SaveAidStructure SaveAidStruct;
 //-----------------------------------------------------
 //ÓÃÓÚµ÷ÊÔ
 float ACTIVEPREG_Debug[3];

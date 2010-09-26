@@ -83,8 +83,7 @@ extern uint32 OldMemoryAddressCounter;
 extern uint8  CurrentTimeBuf[4];
 extern uint8  TimeBufForDen[3];
 extern uint8  TimeBufForSpa[3];
-struct SaveStructure SaveStruct;
-struct SaveAidStructure SaveAidStruct;
+
 //-----------------------------------------------------
 //"uart.c"相关变量
 extern uint8 RXStrBuffer[RXArrayLength];
