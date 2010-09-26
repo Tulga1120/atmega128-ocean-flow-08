@@ -8,34 +8,29 @@
 #include <string.h>
 #include <eeprom.h>
 
+typedef unsigned char       bool;
 typedef unsigned char 	    uint8;
 typedef char 			    int8;
 typedef unsigned int	    uint16;
 typedef int				    int16;
-typedef unsigned short      uint16s;                   /* Unsigned 16 bit quantity                           */
-typedef signed   short      int16s;                   /* Signed   16 bit quantity                           */
-typedef unsigned long       uint32;                   /* Unsigned 32 bit quantity                           */
-typedef signed   long       int32;                   /* Signed   32 bit quantity                           */
-typedef float               fp32;                     /* Single precision floating point                    */
-typedef double              fp64;                     /* Double precision floating point                    */
+typedef unsigned short      uint16s;                    /* Unsigned 16 bit quantity                           */
+typedef signed   short      int16s;                     /* Signed   16 bit quantity                           */
+typedef unsigned long       uint32;                     /* Unsigned 32 bit quantity                           */
+typedef signed   long       int32;                      /* Signed   32 bit quantity                           */
+typedef float               fp32;                       /* Single precision floating point                    */
+typedef double              fp64;                       /* Double precision floating point                    */
 //----------------------------------------------------------------------
-
 #ifndef NULL
 #define NULL                0x00
 #endif
-
 //----------------------------------------------------------------------
-typedef  unsigned char      bool;
 #define  FALSE  		    ((bool)0x00)
 #define  TRUE     		    ((bool)0x01)
 #define  SHOWTRUE   	    ((bool)0x02)
 #define  SAVETRUE   	    ((bool)0x04)
 #define  QUITTRUE   	    ((bool)0x08)
 #define  UPDATETRUE   	    ((bool)0x10)
-
-
 //----------------------------------------------------------------------
-
 typedef  enum
 {
     CHANGED,
@@ -43,15 +38,11 @@ typedef  enum
     NOTCHANGE
 }ChangeType;
 //----------------------------------------------------------------------
-
-typedef unsigned char       AlarmType;
+typedef uint8       AlarmType;
 #define  NOTALARM  	  	 	0x00
 #define  ALARMED_10MINS  	0x01
 #define  ALARMED_20SECS     0x02
-
-
 //----------------------------------------------------------------------
-
 typedef  enum
 {   
     DenTorRotSampleStart,
@@ -64,10 +55,7 @@ typedef  enum
 	SpaFlowSampling,
 	SampleStop
 }SampleType;
-
-
 //----------------------------------------------------------------------
-
 typedef  enum
 {
     MenuG1=1,
@@ -75,34 +63,32 @@ typedef  enum
     MenuG3=3,
     MenuG4=4
 }MenuGrade;
-
 //----------------------------------------------------------------------
-
-struct VOLCURSTRUCTURE
+struct _VOLCURSTRUCTURE
 {
-    unsigned int Vol[3];//
-    unsigned int Cur[3];//带"//"的为稀疏型模式下要存的数据
+    uint16 Vol[3];//
+    uint16 Cur[3];//带"//"的为稀疏型模式下要存的数据
 };
-#define  VolCurStructLen  12
+#define  VolCurStructLen  12        //未使用
 
 struct SAVESTRUCTURE
 {
-    unsigned int head;///带"///"的为稀疏型模式下要存的数据
-	unsigned char TimeBuffer[2];///
-	struct VOLCURSTRUCTURE VolCurStruct;///
-	unsigned int TorqueCountAVG;///
-	unsigned int CP;///
+    uint16 head;///带"///"的为稀疏型模式下要存的数据
+	uint8  TimeBuffer[2];
+	struct _VOLCURSTRUCTURE VolCurStruct;///
+	uint16 TorqueCountAVG;///
+	uint16 CP;///
 	//------------------------------------------------
 	//在这中间的为密集型模式下要存的数据
-    unsigned int Flow1TimeCountAVG;///
-    unsigned int Flow2TimeCountAVG;///
-	unsigned int RotateTimeCountAVG;///
-	signed int   ACTIVEPREGSUM;///
-	signed int   POWERFACTORREGAVG;///
-	unsigned int RotateNumCount;///在稀疏型模式作为尾来存储
-    unsigned int RMSVOLREGAVG;
-    unsigned int RMSCURREGAVG;
-	unsigned int tail;//在密集型模式作为尾来存储
+    uint16 Flow1TimeCountAVG;///
+    uint16 Flow2TimeCountAVG;///
+	uint16 RotateTimeCountAVG;///
+	int16  ACTIVEPREGSUM;///
+	int16  POWERFACTORREGAVG;///
+	uint16 RotateNumCount;///在稀疏型模式作为尾来存储
+    uint16 RMSVOLREGAVG;
+    uint16 RMSCURREGAVG;
+	uint16 tail;//在密集型模式作为尾来存储
 	//------------------------------------------------
 };
 #define  DenSaveStructLen     18
@@ -111,23 +97,21 @@ struct SAVESTRUCTURE
 
 struct SAVEAIDSTRUCT
 {
-    float Power;
-	float PowerFactor;
-	float Vol[3];
-    float Cur[3];
-	unsigned char PowerNum;
-	unsigned long int Flow1TimeCountSUM;
-	unsigned int Flow1Num;
-	unsigned long int Flow2TimeCountSUM;
-	unsigned int Flow2Num;
-	unsigned long int RotateTimeCountSUM;
-	unsigned char RotateNum;
-	unsigned long int TorqueCountSUM;
-	unsigned char TorqueNum;
+    float  Power;
+	float  PowerFactor;
+	float  Vol[3];
+    float  Cur[3];
+	uint8  PowerNum;
+	uint32 Flow1TimeCountSUM;
+	uint16 Flow1Num;
+	uint32 Flow2TimeCountSUM;
+	uint16 Flow2Num;
+	uint32 RotateTimeCountSUM;
+	uint8  RotateNum;
+	uint32 TorqueCountSUM;
+	uint8  TorqueNum;
 };
-
 //----------------------------------------------------------------------
-
 struct INTEGRATIONSTRUCTURE
 {
     float OverallPower;
@@ -136,7 +120,6 @@ struct INTEGRATIONSTRUCTURE
     float PowerGetEfficiency;
     float AverageFlowSpeed;
 };
-
 //----------------------------------------------------------------------
 //----------------------------------------------------------------------
 #define  BIT_NUM23     	  0x800000
@@ -164,7 +147,6 @@ struct INTEGRATIONSTRUCTURE
 #define  BIT_NUM1     	  0x000002
 #define  BIT_NUM0     	  0x000001
 
-
 #include "uart.h"
 #include "common.h"
 #include "memory.h"
@@ -176,4 +158,5 @@ struct INTEGRATIONSTRUCTURE
 #include "uart.h"
 #include "memory.h"
 #include "measure.h"
+
 #endif
