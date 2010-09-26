@@ -30,8 +30,8 @@ float CurOffset_C;
 int32 PowerGain_C;	 
 float PowerOffset_C;	
 //-----------------------------------------------------
-bool  CS5463UPDF = FALSE;
-uint8 CS5463_CSTMP = 0x00;
+bool   CS5463UPDF = FALSE;
+uint8  CS5463_CSTMP = 0x00;
 uint32 STAREG[3] = {0x00,0x00,0x00};
 //-----------------------------------------------------
 
@@ -71,6 +71,7 @@ void cs5463_write(uint32 Cmd, uint32 data, uint8 CS5463_CS)
 		{
 		    CLR_REGBIT(CS5463_PORT,CS5463_SDI);
 		}
+		
 		SET_REGBIT(CS5463_PORT,CS5463_SCLK);
 		data<<=1;
 		CLR_REGBIT(CS5463_PORT,CS5463_SCLK);
@@ -96,6 +97,7 @@ uint32 cs5463_read(uint8 Cmd, uint8 CS5463_CS)
 		{
 		    CLR_REGBIT(CS5463_PORT,CS5463_SDI);
 		}
+		
 		SET_REGBIT(CS5463_PORT,CS5463_SCLK);
 		Cmd <<= 1;
 		CLR_REGBIT(CS5463_PORT,CS5463_SCLK);
@@ -132,34 +134,34 @@ float RegValue2Float(int32 data,bool tflag)
 
 void InitPowerPara_FromEeprom(void)
 {
-	EEPROM_READ(CurGain_A_Addr,CurGain_A);
-	EEPROM_READ(VolGain_A_Addr,VolGain_A);
-	EEPROM_READ(PowerGain_A_Addr,PowerGain_A);
+	EEPROM_READ(CurGain_A_Addr,    CurGain_A);
+	EEPROM_READ(VolGain_A_Addr,    VolGain_A);
+	EEPROM_READ(PowerGain_A_Addr,  PowerGain_A);
 
-	EEPROM_READ(CurGain_B_Addr,CurGain_B);
-	EEPROM_READ(VolGain_B_Addr,VolGain_B);
-	EEPROM_READ(PowerGain_B_Addr,PowerGain_B);
+	EEPROM_READ(CurGain_B_Addr,    CurGain_B);
+	EEPROM_READ(VolGain_B_Addr,    VolGain_B);
+	EEPROM_READ(PowerGain_B_Addr,  PowerGain_B);
 
-	EEPROM_READ(CurGain_C_Addr,CurGain_C);
-	EEPROM_READ(VolGain_C_Addr,VolGain_C);
-	EEPROM_READ(PowerGain_C_Addr,PowerGain_C);
+	EEPROM_READ(CurGain_C_Addr,    CurGain_C);
+	EEPROM_READ(VolGain_C_Addr,    VolGain_C);
+	EEPROM_READ(PowerGain_C_Addr,  PowerGain_C);
 	
-	EEPROM_READ(CurOffset_A_Addr,CurOffset_A);
-	EEPROM_READ(VolOffset_A_Addr,VolOffset_A);
+	EEPROM_READ(CurOffset_A_Addr,  CurOffset_A);
+	EEPROM_READ(VolOffset_A_Addr,  VolOffset_A);
 	EEPROM_READ(PowerOffset_A_Addr,PowerOffset_A);
 
-	EEPROM_READ(CurOffset_B_Addr,CurOffset_B);
-	EEPROM_READ(VolOffset_B_Addr,VolOffset_B);
+	EEPROM_READ(CurOffset_B_Addr,  CurOffset_B);
+	EEPROM_READ(VolOffset_B_Addr,  VolOffset_B);
 	EEPROM_READ(PowerOffset_B_Addr,PowerOffset_B);
 
-	EEPROM_READ(CurOffset_C_Addr,CurOffset_C);
-	EEPROM_READ(VolOffset_C_Addr,VolOffset_C);
+	EEPROM_READ(CurOffset_C_Addr,  CurOffset_C);
+	EEPROM_READ(VolOffset_C_Addr,  VolOffset_C);
 	EEPROM_READ(PowerOffset_C_Addr,PowerOffset_C);
 }
 
 void CS5463_HarwareReset(void)
 {
-    CS5463_DDR |= CS5463_RESET;
+    CS5463_DDR  |= CS5463_RESET;
     CS5463_PORT &= ~CS5463_RESET;
     delay_1us();
     CS5463_PORT |= CS5463_RESET;
